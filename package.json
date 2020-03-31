@@ -5,5 +5,11 @@
   "main": "assign-deep.js",
   "repository": "https://github.com/PanJarda/assign-deep.js",
   "author": "Jarda Pernik <livingthinkingentity@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "terser": "^4.6.9"
+  },
+  "scripts": {
+    "build": "node terser.js"
+  }
 }
