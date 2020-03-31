@@ -1,0 +1,9 @@
+{
+  "name": "assign-deep",
+  "version": "1.0.0",
+  "description": "merging nested objects",
+  "main": "assign-deep.js",
+  "repository": "https://github.com/PanJarda/assign-deep.js",
+  "author": "Jarda Pernik <livingthinkingentity@gmail.com>",
+  "license": "MIT"
+}
