@@ -5,7 +5,7 @@ merging nested objects
 ## Usage:
 
 ```html
-<script src="assign-deep.js"></script>
+<script src="assign-deep.min.js"></script>
 <script>
 	var target = {
 		a: 1,
