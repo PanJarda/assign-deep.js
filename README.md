@@ -23,16 +23,15 @@ merging nested objects
 		}
 	});
 
-	/*
-		* result = {
-		*     a: 3,
-		*     b: 2,
-		*     c: {
-		*         a: 4,
-		*         b: 2
-		*     }
-		* }
-		*/
+	/* result = {
+	 *     a: 3,
+	 *     b: 2,
+	 *     c: {
+	 *         a: 4,
+	 *         b: 2
+	 *     }
+	 * }
+	 * */
 </script>
 ```
 
