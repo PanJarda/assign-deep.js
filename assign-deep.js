@@ -7,44 +7,44 @@
  */
 ( function( global, factory ) {
 	"use strict";
+	
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
-		module.exports = factory( global, true );
+		module.exports = factory( global );
 	} else {
-		factory( global );
+		factory( global, true );
 	}
-} )( typeof window !== "undefined" ? window : this, function( window, noGlobal ) {
-
+} )( typeof window !== "undefined" ? window : this, function( window, global ) {
 	"use strict";
 
 	var assignDeep = ( function() {
 
-		function copyvalue( key ) {
-			if ( this.of.hasOwnProperty( key ) ) {
-				if ( typeof this.of[ key ] === "object" ) {
-					assignDeep( this.to[ key ], this.of[ key ] );
-				} else {
-					this.to[ key ] = this.of[ key ];
-				}
-			}
+		function copyValue( key ) {
+			if ( !this.from.hasOwnProperty( key ) )
+				return;
+			
+			if ( typeof this.from[ key ] === "object" )
+				return assignDeep( this.to[ key ], this.from[ key ] );
+			
+			this.to[ key ] = this.from[ key ];
 		}
 		
-		function mergeto( source ) {
+		function mergeTo( source ) {
 			if ( !source )
 				return;
 			
 			var keys = Object.keys( source );
 			
-			keys.forEach( copyvalue, { of: source, to: this } );
+			keys.forEach( copyValue, { from: source, to: this } );
 		}
 		
 		function assignDeep( target ) {
 			if ( !target )
-				throw new TypeError( "Cannot convert undefined or null" + 
-					" to object" );
+				throw new TypeError(
+					"Cannot convert undefined or null to object" );
 			
 			var sources = Array.prototype.slice.call( arguments, 1 );
 			
-			sources.forEach( mergeto, target );
+			sources.forEach( mergeTo, target );
 			
 			return target;
 		};
@@ -52,9 +52,8 @@
 		return assignDeep;
 	})();
 
-	if ( !noGlobal ) {
+	if ( !global )
 		window.assignDeep = assignDeep;
-	}
 
 	return assignDeep;
 });
