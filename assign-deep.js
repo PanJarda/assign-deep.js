@@ -25,8 +25,13 @@
 		if ( !this.from.hasOwnProperty( key ) )
 			return;
 		
-		if ( typeof this.from[ key ] === "object" )
+		if ( typeof this.from[ key ] === "object" ) {
+			if (!( key in this.to )) {
+				this.to[ key ] = {};
+			}
+
 			return assignDeep( this.to[ key ], this.from[ key ] );
+		}
 		
 		this.to[ key ] = this.from[ key ];
 	}
